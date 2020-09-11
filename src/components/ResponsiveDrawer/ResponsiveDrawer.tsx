@@ -77,7 +77,7 @@ const ResponsiveDrawer = (props: Props) => {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={toggleSideNavOpen}
+            onClick={() => toggleSideNavOpen()}
             className={classes.menuButton}
           >
             <MenuIcon />
@@ -95,7 +95,7 @@ const ResponsiveDrawer = (props: Props) => {
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={sideNavOpen}
-            onClose={toggleSideNavOpen}
+            onClose={() => toggleSideNavOpen()}
             classes={{
               paper: classes.drawerPaper,
             }}
