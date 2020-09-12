@@ -1,5 +1,5 @@
 {
-  "name": "cra-mobx-ts-boilerplate",
+  "name": "react-express-mongo-boilerplate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
