@@ -8,7 +8,7 @@ const PORT = 8000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
   res.send({
     message: 'hello world',
   });
