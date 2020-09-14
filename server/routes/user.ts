@@ -3,6 +3,8 @@ import { check, validationResult } from 'express-validator/check';
 import HttpStatusCodes from 'http-status-codes';
 import '../core/auth/strategies/local';
 import User from '../models/user';
+import * as jwt from 'jsonwebtoken';
+import config from '../config/config';
 
 const router: Router = Router();
 
@@ -27,7 +29,11 @@ router.post(
         username: req.body.username,
         password: req.body.password,
       });
-      return res.status(HttpStatusCodes.OK).send();
+      const token = jwt.sign(
+        { username: req.body.username, scope: req.body.scope },
+        config.jwt.secret
+      );
+      return res.status(HttpStatusCodes.OK).send({ token: token });
     } catch (err) {
       return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send();
     }

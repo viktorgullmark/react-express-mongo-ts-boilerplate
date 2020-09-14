@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import { check, validationResult } from 'express-validator/check';
+import { check, validationResult } from 'express-validator';
 import HttpStatusCodes from 'http-status-codes';
 import passport from 'passport';
 import '../core/auth/strategies/local';
+import * as jwt from 'jsonwebtoken';
+import config from '../config/config';
 
 const router: Router = Router();
 
@@ -26,12 +28,8 @@ router.post(
       if (!user || err) {
         return res.status(HttpStatusCodes.UNAUTHORIZED).send();
       }
-      req.login(user, (err) => {
-        if (err) {
-          return res.status(HttpStatusCodes.UNAUTHORIZED).send();
-        }
-        return res.status(HttpStatusCodes.OK).send();
-      });
+      const token = jwt.sign({ username: user.username }, config.jwt.secret);
+      return res.status(HttpStatusCodes.OK).send({ token: token });
     })(req, res, next);
   }
 );

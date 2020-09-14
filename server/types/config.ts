@@ -1,10 +1,10 @@
 import DbConfig from './db-config';
-import SessionConfig from './session-config';
+import JwtConfig from './jwt-config';
 
 type Config = {
   production: boolean;
-  session: SessionConfig;
   db: DbConfig;
+  jwt: JwtConfig;
 };
 
 export default Config;

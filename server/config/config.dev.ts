@@ -2,16 +2,6 @@ import Config from '../types/config';
 
 const devConfig: Config = {
   production: true,
-  session: {
-    name: 'sessionId',
-    secret: '308398zjij18',
-    collection: 'sessions',
-    cookie: {
-      maxAge: 7 * 24 * (60 * 60 * 1000),
-      httpOnly: true,
-      secure: false,
-    },
-  },
   db: {
     uri: process.env.MONGO_URI || 'mongodb://localhost:27017',
     options: {
@@ -22,6 +12,10 @@ const devConfig: Config = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },
+  },
+  jwt: {
+    secret: 'jwtSecret',
+    expiration: 360000,
   },
 };
 

@@ -2,8 +2,7 @@ import express, { Request, Response } from 'express';
 import {
   initAuth,
   initMiddleware,
-  initMongoose,
-  initSession,
+  initMongoose
 } from './core/init';
 import auth from './routes/auth';
 import user from './routes/user';
@@ -13,7 +12,6 @@ const PORT = 8000;
 
 initMongoose();
 initMiddleware(app);
-initSession(app);
 initAuth(app);
 
 app.get('/', (_req: Request, res: Response) => {
