@@ -4,6 +4,7 @@ import { Express } from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import config from '../config/config';
+import { isProduction } from '../utils';
 
 export const initMiddleware = (app: Express) => {
   app.use(cors());
@@ -16,7 +17,7 @@ export const initMongoose = () => {
     if (err) {
       console.log('could not connect to mongodb');
     }
-    mongoose.set('debug', !config.production);
+    mongoose.set('debug', !isProduction);
   });
 };
 

@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { check, validationResult } from 'express-validator/check';
+import { check, validationResult } from 'express-validator';
 import HttpStatusCodes from 'http-status-codes';
 import '../core/auth/strategies/local';
 import User from '../models/user';

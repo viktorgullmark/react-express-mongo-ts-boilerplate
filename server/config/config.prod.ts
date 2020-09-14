@@ -1,7 +1,6 @@
 import Config from '../types/config';
 
 const prodConfig: Config = {
-  production: true,
   db: {
     uri: process.env.MONGO_URI || '<mongodb uri here>',
     options: {
@@ -11,6 +10,7 @@ const prodConfig: Config = {
       keepAlive: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     },
   },
   jwt: {
