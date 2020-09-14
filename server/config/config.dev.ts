@@ -1,6 +1,6 @@
-import { IConfig } from '../interfaces/config.interface';
+import Config from '../types/config';
 
-const devConfig: IConfig = {
+const devConfig: Config = {
   production: true,
   session: {
     name: 'sessionId',
@@ -17,6 +17,7 @@ const devConfig: IConfig = {
     options: {
       user: process.env.MONGO_USERNAME || '',
       pass: process.env.MONGO_USERNAME || '',
+      dbName: 'dev',
       keepAlive: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
