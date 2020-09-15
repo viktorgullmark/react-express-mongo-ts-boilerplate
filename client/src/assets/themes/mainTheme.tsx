@@ -1,4 +1,4 @@
-import { cyan } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 export default function mainTheme() {
@@ -6,9 +6,9 @@ export default function mainTheme() {
     palette: {
       type: 'light',
       primary: {
-        light: cyan[500],
-        main: cyan[800],
-        dark: cyan[900],
+        light: blueGrey[500],
+        main: blueGrey[800],
+        dark: blueGrey[900],
       },
     },
   });
