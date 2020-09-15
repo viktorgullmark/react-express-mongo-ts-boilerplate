@@ -1,5 +1,5 @@
 const prodConfig = {
-  baseUrl: 'https://localhost:3000',
+  baseUrl: 'http://localhost:8000',
   production: true
 };
 
