@@ -25,7 +25,9 @@ Full stack boilerplate built with React, Express and MongoDB at its core, with a
 - i18next
 
 ## Usage
-you 
+
+Run the following commands separately for client and server
+
 Install dependencies
 ```
 $ npm install
