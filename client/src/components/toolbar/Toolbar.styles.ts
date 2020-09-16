@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         width: '100%',
       },
+      flexGrow: 1,
     },
     drawerEnabled: {
       [theme.breakpoints.up('sm')]: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'none',
       },
     },
+    title: { flexGrow: 1 },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
   })

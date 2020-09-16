@@ -11,7 +11,7 @@ import { fromStream } from 'mobx-utils';
 export class AuthStore extends StoreBase {
   @persist @observable jwtToken?: string = undefined;
 
-  @action.bound setJwtToken = (token: string) => {
+  @action.bound setJwtToken = (token?: string) => {
     this.jwtToken = token;
   };
 
@@ -24,5 +24,10 @@ export class AuthStore extends StoreBase {
         })
       )
     );
+  };
+
+  @action.bound logout = () => {
+    this.setJwtToken(undefined);
+    this.rootStore.routerStore.redirect('/login');
   };
 }

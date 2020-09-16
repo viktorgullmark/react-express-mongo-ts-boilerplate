@@ -1,14 +1,19 @@
+import { create } from 'mobx-persist';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import configureI18n from './config/i18n.config';
 import * as serviceWorker from './serviceWorker';
+import { rootStore } from './store';
 
 configureI18n();
 
-Promise.all([
-  // hydrate persisted stores here
-]).then(() => {
+const hydrate = create({
+  storage: localStorage,
+  jsonify: true,
+});
+
+Promise.all([hydrate('auth', rootStore.authStore)]).then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <App />

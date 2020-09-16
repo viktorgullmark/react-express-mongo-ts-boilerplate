@@ -1,13 +1,13 @@
 import { CssBaseline } from '@material-ui/core';
 import { responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import { createBrowserHistory } from 'history';
-import { observer } from 'mobx-react-lite';
 import React, { Suspense } from 'react';
 import { Router } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 import mainTheme from './assets/themes/mainTheme';
 import ContentWrapper from './components/content-wrapper';
 import GlobalStyles from './components/global-styles';
+import ProtectedRoute from './components/protected-route';
 import { useStores } from './store';
 import Home from './views/home';
 import Login from './views/login';
@@ -20,6 +20,7 @@ const theme = responsiveFontSizes(mainTheme());
 function App() {
   const { routerStore } = useStores();
   routerStore.setHistory(history);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -36,9 +37,7 @@ function App() {
               <Register />
             </Route>
             <ContentWrapper>
-              <Route path='/'>
-                <Home />
-              </Route>
+              <ProtectedRoute path='/' component={Home} />
             </ContentWrapper>
           </Switch>
         </Router>
@@ -47,4 +46,4 @@ function App() {
   );
 }
 
-export default observer(App);
+export default App;

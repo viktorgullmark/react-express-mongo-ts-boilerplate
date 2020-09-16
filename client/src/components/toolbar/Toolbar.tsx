@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import MuiToolbar from '@material-ui/core/Toolbar';
@@ -15,11 +16,13 @@ interface IProps {
 }
 
 const Toolbar: React.FC<IProps> = ({ drawerEnabled }) => {
-  const { layoutStore } = useStores();
+  const { layoutStore, authStore, routerStore } = useStores();
   const { t } = useTranslation();
   const classes = useStyles();
 
   const { toggleSideNavOpen } = layoutStore;
+  const { logout } = authStore;
+  const { redirect } = routerStore;
 
   return (
     <AppBar
@@ -40,9 +43,23 @@ const Toolbar: React.FC<IProps> = ({ drawerEnabled }) => {
             <MenuIcon />
           </IconButton>
         )}
-        <Typography variant='h6' noWrap>
+        <Typography variant='h6' noWrap className={classes.title}>
           {t('title.main')}
         </Typography>
+        {drawerEnabled ? (
+          <Button color='inherit' onClick={() => logout()}>
+            {t('label.logout')}
+          </Button>
+        ) : (
+          <>
+            <Button color='inherit' onClick={() => redirect('/register')}>
+              {t('label.register')}
+            </Button>
+            <Button color='inherit' onClick={() => redirect('/login')}>
+              {t('label.login')}
+            </Button>
+          </>
+        )}
       </MuiToolbar>
     </AppBar>
   );

@@ -7,6 +7,9 @@
   "label": {
     "username": "Username",
     "password": "Password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
   }
 }
